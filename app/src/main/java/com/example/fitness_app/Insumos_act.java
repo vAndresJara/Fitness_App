@@ -99,7 +99,7 @@ public class Insumos_act extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this, "Debe ingresar el codigo del insumo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debe ingresar el codigo", Toast.LENGTH_SHORT).show();
         }
 
 
