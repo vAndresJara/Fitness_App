@@ -108,7 +108,23 @@ public class Insumos_act extends AppCompatActivity {
 
     public void ActualizarInsumnos(View v)
     {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "fichero", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
 
+        String codigo = edCodigo.getText().toString();
+
+        ContentValues cont = new ContentValues();
+        
+        cont.put("codigo", edCodigo.getText().toString());
+        cont.put("nombre", edNombre.getText().toString());
+        cont.put("precio", edPrecio.getText().toString());
+        cont.put("stock", edStock.getText().toString());
+
+        if(!codigo.isEmpty())
+        {
+            bd.update("insumos", cont, "codigo"+codigo, null);
+            Toast.makeText(this, "Se ha actualizado el campo",Toast.LENGTH_LONG).show();
+        }
     }
 
 
