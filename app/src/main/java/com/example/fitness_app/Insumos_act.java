@@ -41,6 +41,11 @@ public class Insumos_act extends AppCompatActivity {
             registro.put("precio", edPrecio.getText().toString());
             registro.put("stock", edStock.getText().toString());
 
+            edCodigo.setText("");
+            edNombre.setText("");
+            edStock.setText("");
+            edPrecio.setText("");
+
             bd.insert("insumos", null, registro);
             bd.close();
 
@@ -70,6 +75,11 @@ public class Insumos_act extends AppCompatActivity {
                 edNombre.setText(fila.getString(0));
                 edPrecio.setText(fila.getString(1));
                 edStock.setText(fila.getString(2));
+
+                edCodigo.setText("");
+                edNombre.setText("");
+                edStock.setText("");
+                edPrecio.setText("");
             }
             else{
                 Toast.makeText(this,"El producto no existe",Toast.LENGTH_LONG).show();
@@ -96,6 +106,11 @@ public class Insumos_act extends AppCompatActivity {
             bd.close();
             Toast.makeText(this,"Has eliminado el insumo",Toast.LENGTH_LONG).show();
 
+            edCodigo.setText("");
+            edNombre.setText("");
+            edStock.setText("");
+            edPrecio.setText("");
+
         }
         else
         {
@@ -114,7 +129,7 @@ public class Insumos_act extends AppCompatActivity {
         String codigo = edCodigo.getText().toString();
 
         ContentValues cont = new ContentValues();
-        
+
         cont.put("codigo", edCodigo.getText().toString());
         cont.put("nombre", edNombre.getText().toString());
         cont.put("precio", edPrecio.getText().toString());
@@ -122,8 +137,15 @@ public class Insumos_act extends AppCompatActivity {
 
         if(!codigo.isEmpty())
         {
-            bd.update("insumos", cont, "codigo"+codigo, null);
+            bd.update("insumos", cont, "codigo="+codigo, null);
             Toast.makeText(this, "Se ha actualizado el campo",Toast.LENGTH_LONG).show();
+
+            edCodigo.setText("");
+            edNombre.setText("");
+            edStock.setText("");
+            edPrecio.setText("");
+
+
         }
     }
 
